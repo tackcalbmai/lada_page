@@ -1,0 +1,2 @@
+# lada_page
+Homepage
