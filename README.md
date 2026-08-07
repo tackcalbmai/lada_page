@@ -1,42 +1,88 @@
-# AVAZZOR TATTOO — official website
+# AVAZZOR TATTOO
 
-Production website for **AVAZZOR TATTOO / Lada Romanova**, tattoo artist in Riga.
+Official website for **AVAZZOR TATTOO / Lada Romanova, Riga**.
 
-## Public site
+Production URL: https://tackcalbmai.github.io/lada_page/
 
-The current public frontend is served from the repository root and includes:
+## Stack
 
-- RU / LV / EN interface;
-- portfolio with fullscreen work preview;
-- Microrealism, Fine line and Cover-up service pages;
-- artist page;
-- booking terms and cancellation policy;
-- separate preparation & aftercare guide;
-- FAQ and journal;
-- WhatsApp booking form with date picker and required acknowledgement of terms/privacy;
-- privacy policy;
-- one-time AVAZZOR brand intro on the home page;
-- responsive desktop/mobile navigation and motion system.
+- semantic static HTML
+- CSS (responsive editorial UI and motion)
+- vanilla JavaScript
+- GitHub Pages deployment
 
-## Contacts
+The public website has no analytics or advertising tracking scripts. Language preference is stored in `localStorage`; the one-per-session brand intro uses `sessionStorage`.
 
-- Instagram: `@avazzor.tattoo`
+## Project structure
+
+- `index.html` — home
+- `portfolio.html` — portfolio
+- `about.html` — artist page
+- `cover-up.html` — cover-up information
+- `preparation.html` — session preparation
+- `aftercare.html` — tattoo aftercare
+- `booking-info.html` — booking terms
+- `booking.html` — tattoo enquiry form
+- `contacts.html` — contacts
+- `faq.html` — short FAQ
+- `privacy.html` — privacy policy
+- `404.html` — branded error page
+- `assets/site.js` — shared navigation, language UI, lightbox, form, intro and interactions
+- `assets/*.css` — shared layout, premium UI, animation and responsive rules
+- `robots.txt` / `sitemap.xml` — crawl configuration
+- `scripts/audit.mjs` — production integrity check
+
+## Local preview
+
+No application server or framework build is required for the public site.
+
+```bash
+python3 -m http.server 8080
+```
+
+Then open `http://localhost:8080/`.
+
+## Production check
+
+```bash
+npm run build
+```
+
+The build command runs the repository audit and checks required pages/assets, local references, canonical/OG metadata and common release blockers such as `href="#"`, release placeholder copy and the misspelling `AVAZOR`.
+
+## Updating content
+
+### Text
+Edit the relevant root HTML page. RU is the source copy. LV/EN text for the dedicated production information pages is stored in `assets/site.js`; existing presentation pages use the shared language layer in `assets/i18n.js`.
+
+### Portfolio photos
+Portfolio visual blocks are in `portfolio.html` and selected work is in `index.html`. When original photos are added, use optimized web-size assets for the page and a higher-resolution source for the lightbox where needed. Keep `data-lightbox` on media that should open in the viewer.
+
+### Contacts
+The current public contacts are:
 - WhatsApp: `+371 26666691`
-- Location: Riga, Latvia
+- Instagram: `@avazzor.tattoo`
 
-## Technical stack
+They are referenced in `assets/site.js`, `contacts.html` and booking-related pages.
 
-- static production frontend on GitHub Pages during development/deployment;
-- Astro source retained for the structured site/CMS layer;
-- Decap CMS configuration under `public/admin`;
-- planned production infrastructure can be moved to Cloudflare without changing client-facing content.
+### Booking terms
+Edit `booking-info.html` and the matching LV/EN keys in `assets/site.js`.
 
-## Content management
+### Preparation
+Edit `preparation.html` and the matching LV/EN keys in `assets/site.js`.
 
-Real portfolio images, prices and editable content should be maintained through the project content/CMS layer. Repository credentials and infrastructure access are not required for normal client content updates once the CMS authentication flow is enabled.
+### Aftercare
+Edit `aftercare.html` and the matching LV/EN keys in `assets/site.js`.
 
-## Status
+### Privacy
+Edit `privacy.html` and the matching LV/EN keys in `assets/site.js`.
 
-**Production-ready site structure — v1.0.0.**
+## Deployment
 
-The website is no longer treated as a demo/starter. Remaining content updates (for example new portfolio photography or future price changes) are normal site content maintenance.
+GitHub Pages serves the repository from the `main` branch root. `.nojekyll` must remain in the repository.
+
+When a custom production domain is connected, update canonical URLs, Open Graph URLs, `sitemap.xml`, `robots.txt` and the structured-data `url` values from the current GitHub Pages URL to the final domain.
+
+## Brand spelling
+
+Use **AVAZZOR TATTOO** everywhere. Do not use `AVAZOR`.
