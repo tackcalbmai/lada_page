@@ -1,0 +1,1 @@
+(()=>{document.addEventListener('submit',e=>{const form=e.target.closest?.('[data-whatsapp-form]');if(!form||!window.LADA_I18N)return;e.preventDefault();e.stopImmediatePropagation();const fd=new FormData(form),phone=form.dataset.phone||'37126666691',msg=window.LADA_I18N.whatsapp(fd);location.href=`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`},true)})();
