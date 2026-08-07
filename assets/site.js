@@ -1,1 +1,1 @@
-(()=>{'use strict';const load=src=>{const s=document.createElement('script');s.src=src;s.async=false;document.head.appendChild(s)};load('assets/site-core.js?v=1');load('assets/production-i18n.js?v=1')})();
+(()=>{'use strict';const load=src=>{const s=document.createElement('script');s.src=src;s.async=false;document.head.appendChild(s)};load('assets/site-core.js?v=1');load('assets/production-i18n.js?v=1');load('assets/guide-fixes.js?v=3');load('assets/form-consent.js?v=1')})();
