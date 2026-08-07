@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppForm from '../components/WhatsAppForm.astro';
+import site from '../data/site.json';
+import services from '../data/services.json';
+import portfolio from '../data/portfolio.json';
+import faq from '../data/faq.json';
+const featured = portfolio.items.filter(x => x.featured).slice(0,3);
+---
+<BaseLayout>
+<section class="hero"><div class="wrap"><p class="eyebrow">MICROREALISM TATTOO</p><h1>{site.brandName}</h1><p class="lead">{site.tagline}. {site.intro}</p><div class="actions"><a class="pill" href="#booking">Обсудить идею</a><a class="ghost" href="/portfolio">Смотреть работы</a></div></div></section>
+<section class="section"><div class="wrap"><div class="head"><div><p class="eyebrow">PORTFOLIO</p><h2>Работы</h2></div><p>Основное направление — микрореализм. Cover-up показываем отдельно, без лишнего дробления на стили.</p></div><div class="grid">{featured.map(item => <article class="card work"><img src={item.image} alt={item.title}><div><span>{item.category}</span><h3>{item.title}</h3><p>{item.description}</p></div></article>)}</div></div></section>
+<section class="section" id="services"><div class="wrap"><p class="eyebrow">SERVICES</p><h2>Услуги</h2><div class="services">{services.items.map(x => <article><h3>{x.title}</h3><p>{x.description}</p><b>{x.price}</b></article>)}</div></div></section>
+<section class="section"><div class="wrap two"><div><p class="eyebrow">ABOUT</p><h2>{site.artistName}</h2></div><p class="lead">Здесь после разговора появится короткий текст о мастере: опыт, подход к микрореализму, эскизам и работе с клиентом.</p></div></section>
+<section class="section"><div class="wrap two"><div><p class="eyebrow">FAQ</p><h2>Перед записью</h2></div><div>{faq.items.map(x => <details><summary>{x.question}</summary><p>{x.answer}</p></details>)}</div></div></section>
+<section class="section" id="booking"><div class="wrap two"><div><p class="eyebrow">BOOKING</p><h2>Расскажи об идее</h2><p class="lead">Форма собирает данные и открывает готовое сообщение в WhatsApp. Референсы можно приложить уже в чате.</p></div><WhatsAppForm /></div></section>
+</BaseLayout>

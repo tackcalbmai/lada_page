@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import blog from '../../data/blog.json';
+---
+<BaseLayout title="Блог — тату и микрореализм"><section class="section top"><div class="wrap"><p class="eyebrow">BLOG</p><h1>Полезное</h1><div class="grid blog">{blog.items.map(x => <a class="card article" href={`/blog/${x.slug}`}><small>{x.date}</small><h3>{x.title}</h3><p>{x.description}</p></a>)}</div></div></section></BaseLayout>

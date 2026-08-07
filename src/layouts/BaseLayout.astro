@@ -1,0 +1,10 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+const { title = `${site.brandName} — микрореализм`, description = site.intro } = Astro.props;
+---
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="description" content={description}><link rel="icon" href="/favicon.svg"><title>{title}</title></head><body>
+<header><div class="wrap nav"><a class="brand" href="/">{site.brandName}</a><nav><a href="/portfolio">Работы</a><a href="/#services">Услуги</a><a href="/blog">Блог</a><a class="pill" href="/#booking">Записаться</a></nav></div></header>
+<main><slot /></main>
+<footer><div class="wrap footer"><div><b>{site.artistName}</b><p>Микрореализм · {site.city}</p></div><div><a href={site.instagramUrl}>Instagram</a><br><a href="/privacy">Конфиденциальность</a></div></div></footer>
+</body></html>

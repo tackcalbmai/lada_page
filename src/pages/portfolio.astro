@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import portfolio from '../data/portfolio.json';
+---
+<BaseLayout title="Портфолио — микрореализм"><section class="section top"><div class="wrap"><p class="eyebrow">PORTFOLIO</p><h1>Работы</h1><p class="lead">Микрореализм и отдельная категория Cover-up.</p><div class="filters"><button data-filter="all">Все</button><button data-filter="Работы">Работы</button><button data-filter="Cover-up">Cover-up</button></div><div class="grid" id="portfolio">{portfolio.items.map(item => <article class="card work" data-category={item.category}><img src={item.image} alt={item.title}><div><span>{item.category}</span><h3>{item.title}</h3><p>{item.description}</p></div></article>)}</div></div></section></BaseLayout>
+<script>
+  document.querySelectorAll('[data-filter]').forEach(btn => btn.addEventListener('click', () => {
+    const filter = btn.getAttribute('data-filter');
+    document.querySelectorAll('#portfolio [data-category]').forEach(el => el.toggleAttribute('hidden', filter !== 'all' && el.getAttribute('data-category') !== filter));
+  }));
+</script>
