@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tackcalbmai.github.io/lada_page/sitemap.xml
