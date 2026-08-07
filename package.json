@@ -1,8 +1,10 @@
 {
-  "name":"avazzor-tattoo-site",
-  "version":"1.0.0",
-  "private":true,
-  "type":"module",
-  "scripts":{"dev":"astro dev","build":"astro build","preview":"astro preview"},
-  "dependencies":{"astro":"^7.1.5"}
+  "name": "avazzor-tattoo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/audit.mjs",
+    "audit": "node scripts/audit.mjs"
+  }
 }
